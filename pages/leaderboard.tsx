@@ -258,7 +258,7 @@ export default function Leaderboard() {
                         <div className="flex items-center gap-3">
                           <div>
                             <p className="font-semibold text-sm text-[#e0dcd4]">
-                              {row.user_name || "Anonymous Matchlete"}
+                              {row.user_name || ""}
                             </p>
                           </div>
                         </div>
