@@ -471,9 +471,9 @@ export default function Home() {
               {user && userRank !== null && userPercentile !== null && (
                 <div className="text-center bg-[#171a1e] border border-[#282c34] py-3 px-6 rounded-xl display-inline-block mx-auto max-w-md">
                   <p className="text-[#f0efeb] text-sm">
-                    You rank <span className="font-semibold text-[#b4c0c8]">#{userRank}</span> out of {leaderboard.length} players
+                    <span className="font-semibold text-[#b4c0c8]">#{userRank}</span> out of {leaderboard.length} players
                     <span className="text-[#515761] mx-3">•</span>
-                    Better than <span className="font-semibold text-[#b4bcc4]">{userPercentile.toFixed(1)}%</span> of players
+                    <span className="font-semibold text-[#b4bcc4]">{userPercentile.toFixed(1)}</span>th percentile
                   </p>
                 </div>
               )}
