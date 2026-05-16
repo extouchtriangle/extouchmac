@@ -313,10 +313,10 @@ export default function Dashboard() {
       <div className="container mx-auto px-6 py-12 max-w-6xl">
         <div className="mb-10 text-center md:text-left">
           <h2 className="text-3xl font-extrabold tracking-tight text-[#e0dcd4]">
-            Performance <span className="text-[#b4bcc4]">Dashboard</span>
+            performance <span className="text-[#b4bcc4]">dashboard</span>
           </h2>
           <p className="text-[#8b919a] text-sm mt-1">
-            Track your mathematical benchmark metrics and progression history.
+            yay, stats!
           </p>
         </div>
 
@@ -357,7 +357,7 @@ export default function Dashboard() {
         {scores.length > 0 ? (
           <div className="bg-[#1f2228]/50 border border-[#282c34] rounded-2xl p-6 backdrop-blur-sm">
             <h3 className="text-sm font-bold text-[#e0dcd4] mb-6 flex items-center gap-2 uppercase tracking-wider">
-              <span>📈</span> Progress Chart
+              <span>📈</span> progress chart
             </h3>
             <div className="w-full">
               <LineChart data={chartData} />
@@ -367,12 +367,12 @@ export default function Dashboard() {
           <div className="bg-[#1f2228]/30 border border-[#282c34] rounded-2xl p-12 text-center max-w-xl mx-auto">
             <div className="text-5xl mb-4 opacity-40">🎯</div>
             <h4 className="text-lg font-bold text-[#e0dcd4] mb-2">No games tracked yet</h4>
-            <p className="text-[#8b919a] text-sm mb-6">Complete a math sprint sequence to view your progression vectors.</p>
+            <p className="text-[#8b919a] text-sm mb-6">finish at least one game to see the graph</p>
             <button
               onClick={() => router.push("/")}
               className="px-8 py-3 bg-[#282c34] hover:bg-[#3d424a] border-2 border-[#b4bcc4] text-[#e0dcd4] rounded-xl font-bold text-sm transition-all"
             >
-              Start Sprint Sequence
+              homepage
             </button>
           </div>
         )}
