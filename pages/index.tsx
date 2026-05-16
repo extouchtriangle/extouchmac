@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { createClient, User } from "@supabase/supabase-js";
 // Import Geist Mono explicitly from Next.js font package
 import { Geist_Mono } from "next/font/google";
-
+const geist = Geist_Mono()
 const createSupabaseClient = () => {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -383,7 +383,7 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className={`min-h-screen bg-[#171a1e] flex items-center justify-center ${Geist_Mono.className} antialiased`}>
+      <div className={`min-h-screen bg-[#171a1e] flex items-center justify-center ${geist.className} antialiased`}>
         <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#b4bcc4]"></div>
       </div>
     );
@@ -392,7 +392,7 @@ export default function Home() {
   // Applied GeistMono.className directly to the parent layout wrapper.
   // Added style family rule to inherit properly inside SVGs.
   return (
-    <div className={`min-h-screen bg-[#171a1e] text-[#e0dcd4] relative overflow-hidden ${Geist_Mono.className} antialiased`}>
+    <div className={`min-h-screen bg-[#171a1e] text-[#e0dcd4] relative overflow-hidden ${geist.className} antialiased`}>
       {/* Auth Section */}
       <div className="absolute top-6 right-6 z-20">
         {user ? (
