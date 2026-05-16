@@ -26,7 +26,6 @@ export default function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState<
     {
       user_id: string;
-      avgScore: number;
       highScore: number;
       avatar_url: string;
       user_name: string;
@@ -67,7 +66,6 @@ export default function Leaderboard() {
           total: number;
           count: number;
           highScore: number;
-          avgScore: number
           avatar_url: string;
           user_name: string;
         }
@@ -79,7 +77,6 @@ export default function Leaderboard() {
             total: 0,
             count: 0,
             highScore: 0,
-            avgScore: 0,
             avatar_url: row.avatar_url,
             user_name: row.user_name,
           };
@@ -90,7 +87,6 @@ export default function Leaderboard() {
           userScores[row.user_id].highScore,
           row.value
         );
-        userScores[row.user_id].avgScore = userScores[row.user_id].total / userScores[row.user_id].count;
       }
 
       const leaderboardArr = Object.entries(userScores)
