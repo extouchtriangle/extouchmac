@@ -139,20 +139,20 @@ export default function Leaderboard() {
                 onClick={() => router.push("/")}
                 className="w-32 px-4 py-2 bg-[#282c34] hover:bg-[#3d424a] text-[#8b919a] hover:text-[#e0dcd4] rounded-lg transition-colors text-sm flex items-center justify-center space-x-2 border border-[#3d424a] hover:border-[#515761]"
               >
-                <span>Home</span>
+                <span>home</span>
               </button>
               <button
                 onClick={() => router.push("/leaderboard")}
                 className="w-32 px-4 py-2 bg-[#3d424a] text-[#e0dcd4] rounded-lg text-sm transition-colors flex items-center justify-center space-x-2 border border-[#b4bcc4]"
               >
-                <span>Leaderboard</span>
+                <span>leaderboard</span>
               </button>
               {user && (
                 <button
                   onClick={() => router.push("/dashboard")}
                   className="w-32 px-4 py-2 bg-[#282c34] hover:bg-[#3d424a] text-[#8b919a] hover:text-[#e0dcd4] rounded-lg transition-colors text-sm flex items-center justify-center space-x-2 border border-[#3d424a] hover:border-[#515761]"
                 >
-                  <span>Dashboard</span>
+                  <span>dashboard</span>
                 </button>
               )}
             </div>
@@ -197,7 +197,7 @@ export default function Leaderboard() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-4xl font-extrabold mb-4 tracking-tight text-[#e0dcd4]">
-              Top <span className="text-[#b4bcc4]">Mathletes</span>
+              top <span className="text-[#b4bcc4]">math mains</span>
             </h2>
             <p className="text-[#8b919a] text-sm">
               Ranked by highest score • {leaderboard.length} player{leaderboard.length !== 1 ? 's' : ''}
@@ -209,16 +209,16 @@ export default function Leaderboard() {
               <div className="text-center py-12">
                 <div className="text-5xl mb-4 opacity-50">📊</div>
                 <h3 className="text-xl font-bold text-[#e0dcd4] mb-2">
-                  No scores yet
+                  no scores yet
                 </h3>
                 <p className="text-[#8b919a] text-sm mb-6">
-                  Be the first to play and set a record!
+                  be the first to play and set a record!
                 </p>
                 <button
                   onClick={() => router.push("/")}
                   className="px-8 py-3 bg-[#282c34] hover:bg-[#3d424a] border-2 border-[#b4bcc4] text-[#e0dcd4] rounded-xl font-bold text-sm transition-all shadow-md"
                 >
-                  Start Playing
+                  start playing
                 </button>
               </div>
             ) : (
