@@ -450,10 +450,10 @@ export default function Home() {
               zetamac but the team captain hijacked the ui :p
             </p>
             <button
-              onClick={() => router.push("/leaderboard")}
-              className="px-6 py-2.5 bg-[#1f2228] hover:bg-[#282c34] text-[#f0efeb] rounded-lg font-medium text-sm transition-colors border border-[#3d424a] hover:border-[#515761] shadow-sm"
+              onClick={startGame}
+              className="px-12 py-4 bg-[#282c34] hover:bg-[#3d424a] border-2 border-[#b4bcc4] text-[#e0dcd4] hover:text-[#f0efeb] rounded-xl font-bold text-lg tracking-wide transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
             >
-              leaderboard
+              start game
             </button>
           </div>
 
@@ -483,10 +483,10 @@ export default function Home() {
           {/* Start Game Button */}
           <div className="text-center">
             <button
-              onClick={startGame}
-              className="px-12 py-4 bg-[#282c34] hover:bg-[#3d424a] border-2 border-[#b4bcc4] text-[#e0dcd4] hover:text-[#f0efeb] rounded-xl font-bold text-lg tracking-wide transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
+              onClick={() => router.push("/leaderboard")}
+              className="px-6 py-2.5 bg-[#1f2228] hover:bg-[#282c34] text-[#f0efeb] rounded-lg font-medium text-sm transition-colors border border-[#3d424a] hover:border-[#515761] shadow-sm"
             >
-              start game
+              leaderboard
             </button>
           </div>
         </div>
