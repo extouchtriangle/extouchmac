@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { createClient, User } from "@supabase/supabase-js";
 // Import Geist Mono explicitly from Next.js font package
-import { GeistMono } from "geist/font/mono";
+import { GeistMono } from "next/font/google";
 
 const createSupabaseClient = () => {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
