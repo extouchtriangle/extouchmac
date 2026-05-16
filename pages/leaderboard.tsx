@@ -78,7 +78,7 @@ export default function Leaderboard() {
           userScores[row.user_id] = {
             total: 0,
             count: 0,
-            highScore: 0
+            highScore: 0,
             avgScore: 0,
             avatar_url: row.avatar_url,
             user_name: row.user_name,
