@@ -201,7 +201,7 @@ export default function Leaderboard() {
               top <span className="text-[#b4bcc4]">math mains</span>
             </h2>
             <p className="text-[#8b919a] text-sm">
-              Ranked by highest score • {leaderboard.length} player{leaderboard.length !== 1 ? 's' : ''}
+              ranked by highest score • {leaderboard.length} player{leaderboard.length !== 1 ? 's' : ''}
             </p>
           </div>
 
@@ -295,7 +295,7 @@ export default function Leaderboard() {
                   <div className="inline-flex items-center gap-2 bg-[#171a1e] text-[#8b919a] px-6 py-2.5 rounded-xl border border-[#282c34] text-xs font-medium">
                     <span>📈</span>
                     <span>
-                      {leaderboard.length} total player{leaderboard.length !== 1 ? "s" : ""} • Best high score:{" "}
+                      {leaderboard.length} total player{leaderboard.length !== 1 ? "s" : ""} • best high score:{" "}
                       <span className="text-[#e0dcd4] font-bold">{leaderboard[0]?.highScore.toFixed(0) || "0"}</span>
                     </span>
                   </div>

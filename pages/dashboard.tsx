@@ -356,7 +356,7 @@ export default function Dashboard() {
         {/* Historical Progress Chart Block */}
         {scores.length > 0 ? (
           <div className="bg-[#1f2228]/50 border border-[#282c34] rounded-2xl p-6 backdrop-blur-sm">
-            <h3 className="text-sm font-bold text-[#e0dcd4] mb-6 flex items-center gap-2 uppercase tracking-wider">
+            <h3 className="text-sm font-bold text-[#e0dcd4] mb-6 flex items-center gap-2 lowercase tracking-wider">
               <span>📈</span> progress chart
             </h3>
             <div className="w-full">
