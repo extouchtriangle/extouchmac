@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { createClient, User } from "@supabase/supabase-js";
+// Import Geist Mono explicitly from Next.js font package
+import { GeistMono } from "geist/font/mono";
 
 const createSupabaseClient = () => {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -185,7 +187,7 @@ const ScoreHistogram = ({ scores, userScore }: { scores: number[]; userScore: nu
               textAnchor="middle"
               fill="#8b919a"
               fontSize="11"
-              fontFamily="var(--font-geist-mono), Geist Mono, monospace"
+              style={{ fontFamily: "inherit" }}
             >
               {Math.round(score)}
             </text>
@@ -200,7 +202,7 @@ const ScoreHistogram = ({ scores, userScore }: { scores: number[]; userScore: nu
           fill="#676d77"
           fontSize="12"
           fontWeight="500"
-          fontFamily="var(--font-geist-mono), Geist Mono, monospace"
+          style={{ fontFamily: "inherit" }}
         >
           Score Distribution
         </text>
@@ -217,7 +219,7 @@ const ScoreHistogram = ({ scores, userScore }: { scores: number[]; userScore: nu
               textAnchor="end"
               fill="#8b919a"
               fontSize="10"
-              fontFamily="var(--font-geist-mono), Geist Mono, monospace"
+              style={{ fontFamily: "inherit" }}
             >
               {count}
             </text>
@@ -381,14 +383,16 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#171a1e] flex items-center justify-center font-mono">
+      <div className={`min-h-screen bg-[#171a1e] flex items-center justify-center ${GeistMono.className} antialiased`}>
         <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#b4bcc4]"></div>
       </div>
     );
   }
 
+  // Applied GeistMono.className directly to the parent layout wrapper.
+  // Added style family rule to inherit properly inside SVGs.
   return (
-    <div className="min-h-screen bg-[#171a1e] text-[#e0dcd4] relative overflow-hidden font-mono antialiased">
+    <div className={`min-h-screen bg-[#171a1e] text-[#e0dcd4] relative overflow-hidden ${GeistMono.className} antialiased`}>
       {/* Auth Section */}
       <div className="absolute top-6 right-6 z-20">
         {user ? (
