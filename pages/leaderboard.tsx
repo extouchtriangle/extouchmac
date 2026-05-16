@@ -28,6 +28,7 @@ export default function Leaderboard() {
       user_id: string;
       highScore: number;
       avatar_url: string;
+      avg: number;
       user_name: string;
     }[]
   >([]);
