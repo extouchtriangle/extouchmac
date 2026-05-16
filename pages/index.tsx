@@ -287,6 +287,7 @@ export default function Home() {
           highScore: number;
           avatar_url: string;
           user_name: string;
+          avgScore: number
         }
       > = {};
 
@@ -296,6 +297,7 @@ export default function Home() {
             total: 0,
             count: 0,
             highScore: 0,
+            avgScore: 0,
             avatar_url: row.avatar_url,
             user_name: ``,
           };
@@ -306,6 +308,7 @@ export default function Home() {
           userScores[row.user_id].highScore,
           row.value
         );
+        userScores[row.user_id].avgScore = userScores[row.user_id].total / userScores[row.user_id].count;
       }
 
       const leaderboardArr = Object.entries(userScores)

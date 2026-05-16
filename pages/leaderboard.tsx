@@ -67,6 +67,7 @@ export default function Leaderboard() {
           total: number;
           count: number;
           highScore: number;
+          avgScore: number
           avatar_url: string;
           user_name: string;
         }
@@ -77,7 +78,8 @@ export default function Leaderboard() {
           userScores[row.user_id] = {
             total: 0,
             count: 0,
-            highScore: 0,
+            highScore: 0
+            avgScore: 0,
             avatar_url: row.avatar_url,
             user_name: row.user_name,
           };
@@ -88,6 +90,7 @@ export default function Leaderboard() {
           userScores[row.user_id].highScore,
           row.value
         );
+        userScores[row.user_id].avgScore = userScores[row.user_id].total / userScores[row.user_id].count;
       }
 
       const leaderboardArr = Object.entries(userScores)
@@ -272,6 +275,14 @@ export default function Leaderboard() {
                         </div>
                         <div className="text-xs text-[#676d77] lowercase tracking-wider">
                           high score
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-2xl font-bold text-[#b4bcc4]">
+                          {row.avgScore.toFixed(0)}
+                        </div>
+                        <div className="text-xs text-[#676d77] lowercase tracking-wider">
+                          average score
                         </div>
                       </div>
                       {row.avatar_url ? (
