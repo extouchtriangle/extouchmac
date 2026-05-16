@@ -185,6 +185,7 @@ const ScoreHistogram = ({ scores, userScore }: { scores: number[]; userScore: nu
               textAnchor="middle"
               fill="#8b919a"
               fontSize="11"
+              fontFamily="var(--font-geist-mono), Geist Mono, monospace"
             >
               {Math.round(score)}
             </text>
@@ -199,6 +200,7 @@ const ScoreHistogram = ({ scores, userScore }: { scores: number[]; userScore: nu
           fill="#676d77"
           fontSize="12"
           fontWeight="500"
+          fontFamily="var(--font-geist-mono), Geist Mono, monospace"
         >
           Score Distribution
         </text>
@@ -215,6 +217,7 @@ const ScoreHistogram = ({ scores, userScore }: { scores: number[]; userScore: nu
               textAnchor="end"
               fill="#8b919a"
               fontSize="10"
+              fontFamily="var(--font-geist-mono), Geist Mono, monospace"
             >
               {count}
             </text>
@@ -378,15 +381,14 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#171a1e] flex items-center justify-center">
-        {/* Spinner using Compline Blue */}
+      <div className="min-h-screen bg-[#171a1e] flex items-center justify-center font-mono">
         <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#b4bcc4]"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#171a1e] text-[#e0dcd4] relative overflow-hidden font-sans">
+    <div className="min-h-screen bg-[#171a1e] text-[#e0dcd4] relative overflow-hidden font-mono antialiased">
       {/* Auth Section */}
       <div className="absolute top-6 right-6 z-20">
         {user ? (
@@ -435,10 +437,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           {/* Hero section */}
           <div className="text-center mb-12">
-            <h1 className="text-6xl md:text-7xl font-extrabold mb-4 tracking-tight text-[#e0dcd4]">
+            <h1 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight text-[#e0dcd4]">
               not <span className="text-[#b4bcc4]">zetamac</span>
             </h1>
-            <p className="text-lg md:text-xl mb-8 text-[#f0efeb] max-w-2xl mx-auto font-mono opacity-80">
+            <p className="text-base md:text-lg mb-8 text-[#f0efeb] max-w-2xl mx-auto opacity-75">
               zetamac but better :p
             </p>
             <button
