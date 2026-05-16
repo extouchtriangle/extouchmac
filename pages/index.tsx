@@ -3,7 +3,9 @@ import { useRouter } from "next/router";
 import { createClient, User } from "@supabase/supabase-js";
 // Import Geist Mono explicitly from Next.js font package
 import { Geist_Mono } from "next/font/google";
-const geist = Geist_Mono()
+const geist = Geist_Mono({
+  subsets: ['latin'],
+})
 const createSupabaseClient = () => {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
