@@ -443,10 +443,10 @@ export default function Home() {
           {/* Hero section */}
           <div className="text-center mb-8">
             <h1 className="text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              DataMac
+              ExtouchtriangleMac
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 mb-6 max-w-2xl mx-auto">
-              Speed & Precision
+              zetamac but better :p
             </p>
             <button
               onClick={() => router.push("/leaderboard")}
