@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { createClient, User } from "@supabase/supabase-js";
-import { UserMetadata } from "../types";
 
 const createSupabaseClient = () => {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -43,11 +42,10 @@ const ScoreHistogram = ({ scores, userScore }: { scores: number[]; userScore: nu
 
   const minScore = Math.min(...scores);
   const maxScore = Math.max(...scores);
-  const range = maxScore - minScore || 1; // Avoid division by zero
+  const range = maxScore - minScore || 1;
   const numBins = Math.min(30, Math.max(10, Math.floor(Math.sqrt(scores.length) * 2)));
   const binWidth = range / numBins || 1;
 
-  // Create bins
   const bins: number[] = new Array(numBins).fill(0);
   scores.forEach((score) => {
     const binIndex = Math.min(
@@ -60,9 +58,8 @@ const ScoreHistogram = ({ scores, userScore }: { scores: number[]; userScore: nu
   const maxCount = Math.max(...bins);
   const height = 400;
   const padding = 50;
-  const width = 1200; // Base width for calculations
+  const width = 1200;
 
-  // Create line path points
   const points: string[] = [];
   bins.forEach((count, index) => {
     const x = padding + ((index / (numBins - 1)) * (width - padding * 2));
@@ -70,13 +67,9 @@ const ScoreHistogram = ({ scores, userScore }: { scores: number[]; userScore: nu
     points.push(`${x} ${y}`);
   });
 
-  // Create area path (for filled area under line)
   const areaPath = `M ${padding} ${height - padding} ${points.join(' L ')} L ${width - padding} ${height - padding} Z`;
-
-  // Create line path
   const linePath = `M ${points.join(' L ')}`;
 
-  // Find user score position
   const userScoreX = userScore !== null && userScore !== undefined && range > 0
     ? padding + (((userScore - minScore) / range) * (width - padding * 2))
     : null;
@@ -84,7 +77,7 @@ const ScoreHistogram = ({ scores, userScore }: { scores: number[]; userScore: nu
   return (
     <div className="w-full">
       <svg width="100%" height={height + 60} className="overflow-visible" viewBox={`0 0 ${width} ${height + 60}`} preserveAspectRatio="none">
-        {/* Grid lines */}
+        {/* Grid lines - base4 */}
         {[0, 0.25, 0.5, 0.75, 1].map((ratio) => {
           const y = height - padding - (ratio * (height - padding * 2));
           return (
@@ -94,51 +87,51 @@ const ScoreHistogram = ({ scores, userScore }: { scores: number[]; userScore: nu
               y1={y}
               x2={width - padding}
               y2={y}
-              stroke="#334155"
+              stroke="#3d424a"
               strokeWidth="0.5"
-              opacity="0.3"
+              opacity="0.4"
             />
           );
         })}
 
-        {/* Filled area under line */}
+        {/* Filled area under line - Compline Blue */}
         <path
           d={areaPath}
-          fill="url(#gradient)"
-          opacity="0.3"
+          fill="url(#complineGradient)"
+          opacity="0.2"
         />
         <defs>
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.1" />
+          <linearGradient id="complineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#b4bcc4" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#b4bcc4" stopOpacity="0.0" />
           </linearGradient>
         </defs>
 
-        {/* Line */}
+        {/* Line - Compline Blue */}
         <path
           d={linePath}
           fill="none"
-          stroke="#3b82f6"
+          stroke="#b4bcc4"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
 
-        {/* User score vertical line */}
+        {/* User score vertical line - Compline Cyan */}
         {userScoreX !== null && (
           <line
             x1={userScoreX}
             y1={padding}
             x2={userScoreX}
             y2={height - padding}
-            stroke="#60a5fa"
+            stroke="#b4c0c8"
             strokeWidth="2"
             strokeDasharray="4 4"
             opacity="0.8"
           />
         )}
 
-        {/* User score dot */}
+        {/* User score dot - Compline Cyan with Dark Cyan border */}
         {userScoreX !== null && userScore !== null && userScore !== undefined && range > 0 && (
           (() => {
             const userBinIndex = Math.min(
@@ -151,36 +144,36 @@ const ScoreHistogram = ({ scores, userScore }: { scores: number[]; userScore: nu
               <circle
                 cx={userScoreX}
                 cy={userY}
-                r="4"
-                fill="#60a5fa"
-                stroke="#1e40af"
+                r="5"
+                fill="#b4c0c8"
+                stroke="#98a4ac"
                 strokeWidth="2"
               />
             );
           })()
         )}
 
-        {/* X-axis */}
+        {/* X-axis - base5 */}
         <line
           x1={padding}
           y1={height - padding}
           x2={width - padding}
           y2={height - padding}
-          stroke="#475569"
+          stroke="#515761"
           strokeWidth="2"
         />
 
-        {/* Y-axis */}
+        {/* Y-axis - base5 */}
         <line
           x1={padding}
           y1={padding}
           x2={padding}
           y2={height - padding}
-          stroke="#475569"
+          stroke="#515761"
           strokeWidth="2"
         />
 
-        {/* X-axis labels */}
+        {/* X-axis labels - base7 */}
         {[0, 0.25, 0.5, 0.75, 1].map((ratio) => {
           const score = minScore + (ratio * range);
           const x = padding + (ratio * (width - padding * 2));
@@ -188,39 +181,40 @@ const ScoreHistogram = ({ scores, userScore }: { scores: number[]; userScore: nu
             <text
               key={ratio}
               x={x}
-              y={height - padding + 15}
+              y={height - padding + 18}
               textAnchor="middle"
-              className="text-xs fill-slate-400"
-              fontSize="10"
+              fill="#8b919a"
+              fontSize="11"
             >
               {Math.round(score)}
             </text>
           );
         })}
 
-        {/* X-axis title */}
+        {/* X-axis title - base6 */}
         <text
           x={width / 2}
-          y={height - padding + 30}
+          y={height - padding + 36}
           textAnchor="middle"
-          className="text-xs fill-slate-500"
-          fontSize="10"
+          fill="#676d77"
+          fontSize="12"
+          fontWeight="500"
         >
           Score Distribution
         </text>
 
-        {/* Y-axis labels */}
+        {/* Y-axis labels - base7 */}
         {[0, 0.5, 1].map((ratio) => {
           const count = Math.round(ratio * maxCount);
           const y = height - padding - (ratio * (height - padding * 2));
           return (
             <text
               key={ratio}
-              x={padding - 5}
-              y={y + 3}
+              x={padding - 8}
+              y={y + 4}
               textAnchor="end"
-              className="text-xs fill-slate-400"
-              fontSize="9"
+              fill="#8b919a"
+              fontSize="10"
             >
               {count}
             </text>
@@ -266,11 +260,10 @@ export default function Home() {
 
   useEffect(() => {
     const supabase = createSupabaseClient();
-    
-    // Fetch leaderboard data
+
     const fetchLeaderboard = async () => {
       const { data, error } = await supabase.from("scores").select(`
-        user_id, 
+        user_id,
         value,
         avatar_url
       `);
@@ -279,7 +272,6 @@ export default function Home() {
         return;
       }
 
-      // Calculate averages and high scores
       const userScores: Record<
         string,
         {
@@ -321,7 +313,6 @@ export default function Home() {
 
       setLeaderboard(leaderboardArr);
 
-      // Calculate user rank and percentile if logged in
       if (user) {
         const userIndex = leaderboardArr.findIndex((entry) => entry.user_id === user.id);
         if (userIndex !== -1) {
@@ -387,33 +378,35 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600"></div>
+      <div className="min-h-screen bg-[#171a1e] flex items-center justify-center">
+        {/* Spinner using Compline Blue */}
+        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#b4bcc4]"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#1a1d21] text-[#f0efeb] relative overflow-hidden">
+    <div className="min-h-screen bg-[#171a1e] text-[#e0dcd4] relative overflow-hidden font-sans">
+      {/* Auth Section */}
       <div className="absolute top-6 right-6 z-20">
         {user ? (
-          <div className="flex items-center space-x-2 bg-slate-800 rounded-lg p-2 hover:bg-slate-700 transition-colors">
+          <div className="flex items-center space-x-3 bg-[#282c34] border border-[#3d424a] rounded-lg p-2 hover:bg-[#3d424a] transition-colors">
             {user.user_metadata?.avatar_url ? (
               <img
                 src={user.user_metadata.avatar_url}
                 alt="Profile"
-                className="w-8 h-8 rounded-full"
+                className="w-8 h-8 rounded-full border border-[#515761]"
               />
             ) : (
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">
+              <div className="w-8 h-8 bg-[#282c34] border border-[#b4bcc4] rounded-full flex items-center justify-center">
+                <span className="text-[#e0dcd4] font-bold text-sm">
                   {user.email?.charAt(0).toUpperCase()}
                 </span>
               </div>
             )}
             <button
               onClick={signOut}
-              className="text-red-400 hover:text-red-300 p-1 rounded hover:bg-red-400/10 transition-colors"
+              className="text-[#cdacac] hover:text-[#ccc4b4] p-1 rounded hover:bg-[#cdacac]/10 transition-colors"
               title="Sign out"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -424,9 +417,9 @@ export default function Home() {
         ) : (
           <button
             onClick={signInWithGoogle}
-            className="px-5 py-2.5 bg-blue-500 hover:bg-blue-600 rounded-lg font-semibold text-sm text-white transition-colors shadow-md hover:shadow-lg flex items-center space-x-2"
+            className="px-5 py-2.5 bg-[#282c34] hover:bg-[#3d424a] border border-[#515761] rounded-lg font-semibold text-sm text-[#f0efeb] transition-colors shadow-sm flex items-center space-x-2"
           >
-            <svg className="w-4 h-4" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-[#b4bcc4]" viewBox="0 0 24 24">
               <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
               <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
               <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
@@ -438,39 +431,41 @@ export default function Home() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 container mx-auto px-6 pt-16 pb-12">
+      <div className="relative z-10 container mx-auto px-6 pt-24 pb-12">
         <div className="max-w-7xl mx-auto">
           {/* Hero section */}
-          <div className="text-center mb-8">
-            <h1 className="text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              not zetamac
+          <div className="text-center mb-12">
+            <h1 className="text-6xl md:text-7xl font-extrabold mb-4 tracking-tight text-[#e0dcd4]">
+              not <span className="text-[#b4bcc4]">zetamac</span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 mb-6 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl mb-8 text-[#f0efeb] max-w-2xl mx-auto font-mono opacity-80">
               zetamac but better :p
             </p>
             <button
               onClick={() => router.push("/leaderboard")}
-              className="px-6 py-2.5 bg-slate-800 hover:bg-slate-700 rounded-lg font-medium text-sm text-white transition-colors border border-slate-600 hover:border-slate-500 shadow-sm hover:shadow"
+              className="px-6 py-2.5 bg-[#1f2228] hover:bg-[#282c34] text-[#f0efeb] rounded-lg font-medium text-sm transition-colors border border-[#3d424a] hover:border-[#515761] shadow-sm"
             >
               Leaderboard
             </button>
           </div>
 
-          {/* Benchmark Leaderboard */}
+          {/* Benchmark Leaderboard / Histogram section */}
           {leaderboard.length > 0 && (
-            <div className="mb-8">
-              {/* Histogram */}
+            <div className="mb-12 bg-[#1f2228]/50 border border-[#282c34] rounded-2xl p-6 backdrop-blur-sm">
               <div className="mb-6">
-                <ScoreHistogram scores={leaderboard.map(l => l.highScore)} userScore={user ? leaderboard.find(l => l.user_id === user.id)?.highScore : null} />
+                <ScoreHistogram
+                  scores={leaderboard.map(l => l.highScore)}
+                  userScore={user ? leaderboard.find(l => l.user_id === user.id)?.highScore : null}
+                />
               </div>
 
               {/* User rank info */}
               {user && userRank !== null && userPercentile !== null && (
-                <div className="text-center">
-                  <p className="text-slate-300 text-sm">
-                    You rank <span className="font-semibold text-blue-400">#{userRank}</span> out of {leaderboard.length} players
-                    <span className="text-slate-400 mx-2">•</span>
-                    Better than <span className="font-semibold text-blue-400">{userPercentile.toFixed(1)}%</span> of players
+                <div className="text-center bg-[#171a1e] border border-[#282c34] py-3 px-6 rounded-xl display-inline-block mx-auto max-w-md">
+                  <p className="text-[#f0efeb] text-sm">
+                    You rank <span className="font-semibold text-[#b4c0c8]">#{userRank}</span> out of {leaderboard.length} players
+                    <span className="text-[#515761] mx-3">•</span>
+                    Better than <span className="font-semibold text-[#b4bcc4]">{userPercentile.toFixed(1)}%</span> of players
                   </p>
                 </div>
               )}
@@ -481,14 +476,13 @@ export default function Home() {
           <div className="text-center">
             <button
               onClick={startGame}
-              className="px-10 py-4 bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold text-lg transition-colors shadow-md hover:shadow-lg text-white"
+              className="px-12 py-4 bg-[#282c34] hover:bg-[#3d424a] border-2 border-[#b4bcc4] text-[#e0dcd4] hover:text-[#f0efeb] rounded-xl font-bold text-lg tracking-wide transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
             >
               Start Game
             </button>
           </div>
         </div>
       </div>
-
     </div>
   );
 }
