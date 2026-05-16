@@ -26,7 +26,7 @@ export default function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState<
     {
       user_id: string;
-      avg: number;
+      avgScore: number;
       highScore: number;
       avatar_url: string;
       user_name: string;
@@ -279,7 +279,7 @@ export default function Leaderboard() {
                       </div>
                       <div className="text-right">
                         <div className="text-2xl font-bold text-[#b4bcc4]">
-                          {row.avgScore}
+                          {row.avg.toFixed(0)}
                         </div>
                         <div className="text-xs text-[#676d77] lowercase tracking-wider">
                           average score
