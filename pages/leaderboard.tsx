@@ -79,7 +79,7 @@ export default function Leaderboard() {
             count: 0,
             highScore: 0,
             avatar_url: row.avatar_url,
-            user_name: ``,
+            user_name: row.user_name,
           };
         }
         userScores[row.user_id].total += row.value;
