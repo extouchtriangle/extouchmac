@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 };
 
-export default nextConfig;
 modulemodule.exports = {
   eslint: {
     // Warning: This allows production builds to successfully complete even if
@@ -13,3 +12,4 @@ modulemodule.exports = {
     ignoreDuringBuilds: true,
   },
 };
+export default nextConfig;
