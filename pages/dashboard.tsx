@@ -324,7 +324,7 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <div className="bg-[#1f2228]/50 border border-[#282c34] rounded-2xl p-6 backdrop-blur-sm flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold text-[#676d77] uppercase tracking-wider mb-1">Total Games</p>
+              <p className="text-xs font-semibold text-[#676d77] lowercase tracking-wider mb-1">Total Games</p>
               <h3 className="text-4xl font-bold text-[#e0dcd4]">{scores.length}</h3>
             </div>
             <div className="w-12 h-12 bg-[#282c34] border border-[#3d424a] rounded-xl flex items-center justify-center text-xl">
@@ -334,7 +334,7 @@ export default function Dashboard() {
 
           <div className="bg-[#1f2228]/50 border border-[#282c34] rounded-2xl p-6 backdrop-blur-sm flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold text-[#676d77] uppercase tracking-wider mb-1">Average Score</p>
+              <p className="text-xs font-semibold text-[#676d77] lowercase tracking-wider mb-1">Average Score</p>
               <h3 className="text-4xl font-bold text-[#b4bcc4]">{avgScore.toFixed(1)}</h3>
             </div>
             <div className="w-12 h-12 bg-[#282c34] border border-[#3d424a] rounded-xl flex items-center justify-center text-xl">
@@ -344,7 +344,7 @@ export default function Dashboard() {
 
           <div className="bg-[#1f2228]/50 border border-[#282c34] rounded-2xl p-6 backdrop-blur-sm flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold text-[#676d77] uppercase tracking-wider mb-1">High Score</p>
+              <p className="text-xs font-semibold text-[#676d77] lowercase tracking-wider mb-1">High Score</p>
               <h3 className="text-4xl font-bold text-[#e0dcd4]">{highScore}</h3>
             </div>
             <div className="w-12 h-12 bg-[#282c34] border border-[#3d424a] rounded-xl flex items-center justify-center text-xl">
@@ -366,7 +366,7 @@ export default function Dashboard() {
         ) : (
           <div className="bg-[#1f2228]/30 border border-[#282c34] rounded-2xl p-12 text-center max-w-xl mx-auto">
             <div className="text-5xl mb-4 opacity-40">🎯</div>
-            <h4 className="text-lg font-bold text-[#e0dcd4] mb-2">No games tracked yet</h4>
+            <h4 className="text-lg font-bold text-[#e0dcd4] mb-2">no games tracked yet</h4>
             <p className="text-[#8b919a] text-sm mb-6">finish at least one game to see the graph</p>
             <button
               onClick={() => router.push("/")}
