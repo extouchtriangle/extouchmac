@@ -261,19 +261,19 @@ export default function Dashboard() {
                 onClick={() => router.push("/")}
                 className="w-32 px-4 py-2 bg-[#282c34] hover:bg-[#3d424a] text-[#8b919a] hover:text-[#e0dcd4] rounded-lg transition-colors text-sm flex items-center justify-center space-x-2 border border-[#3d424a] hover:border-[#515761]"
               >
-                <span>Home</span>
+                <span>home</span>
               </button>
               <button
                 onClick={() => router.push("/leaderboard")}
                 className="w-32 px-4 py-2 bg-[#282c34] hover:bg-[#3d424a] text-[#8b919a] hover:text-[#e0dcd4] rounded-lg transition-colors text-sm flex items-center justify-center space-x-2 border border-[#3d424a] hover:border-[#515761]"
               >
-                <span>Leaderboard</span>
+                <span>leaderboard</span>
               </button>
               <button
                 onClick={() => router.push("/dashboard")}
                 className="w-32 px-4 py-2 bg-[#3d424a] text-[#e0dcd4] rounded-lg text-sm transition-colors flex items-center justify-center space-x-2 border border-[#b4bcc4]"
               >
-                <span>Dashboard</span>
+                <span>dashboard</span>
               </button>
             </div>
 
