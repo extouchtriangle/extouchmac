@@ -279,7 +279,7 @@ export default function Leaderboard() {
                       </div>
                       <div className="text-right">
                         <div className="text-2xl font-bold text-[#b4bcc4]">
-                          {row.avgScore.toFixed(0)}
+                          {row.avgScore}
                         </div>
                         <div className="text-xs text-[#676d77] lowercase tracking-wider">
                           average score
