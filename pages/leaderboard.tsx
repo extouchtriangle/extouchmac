@@ -271,7 +271,7 @@ export default function Leaderboard() {
                           {row.highScore.toFixed(0)}
                         </div>
                         <div className="text-xs text-[#676d77] lowercase tracking-wider">
-                          high score
+                          high
                         </div>
                       </div>
                       <div className="text-right">
@@ -279,7 +279,7 @@ export default function Leaderboard() {
                           {row.avg.toFixed(0)}
                         </div>
                         <div className="text-xs text-[#676d77] lowercase tracking-wider">
-                          average score
+                          avg
                         </div>
                       </div>
                       {row.avatar_url ? (
