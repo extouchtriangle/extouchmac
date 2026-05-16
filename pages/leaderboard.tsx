@@ -295,7 +295,7 @@ export default function Leaderboard() {
                     <span>📈</span>
                     <span>
                       {leaderboard.length} total player{leaderboard.length !== 1 ? "s" : ""} • Best high score:{" "}
-                      <span className="text-[#e0dcd4] font-bold">{leaderboard?.highScore.toFixed(0) || "0"}</span>
+                      <span className="text-[#e0dcd4] font-bold">{leaderboard[0]?.highScore.toFixed(0) || "0"}</span>
                     </span>
                   </div>
                 </div>
