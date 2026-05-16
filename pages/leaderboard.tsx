@@ -270,7 +270,7 @@ export default function Leaderboard() {
                         <div className="text-2xl font-bold text-[#b4bcc4]">
                           {row.highScore.toFixed(0)}
                         </div>
-                        <div className="text-xs text-[#676d77] uppercase tracking-wider">
+                        <div className="text-xs text-[#676d77] lowercase tracking-wider">
                           high score
                         </div>
                       </div>
