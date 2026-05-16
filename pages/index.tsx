@@ -394,7 +394,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white relative overflow-hidden">
+    <div className="min-h-screen bg-[#1a1d21] text-[#f0efeb] relative overflow-hidden">
       <div className="absolute top-6 right-6 z-20">
         {user ? (
           <div className="flex items-center space-x-2 bg-slate-800 rounded-lg p-2 hover:bg-slate-700 transition-colors">
