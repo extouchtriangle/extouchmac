@@ -51,7 +51,8 @@ export default function Leaderboard() {
       const { data, error } = await supabase.from("scores").select(`
         user_id,
         value,
-        avatar_url
+        avatar_url,
+        user_name
       `);
 
       if (!data || error) {
