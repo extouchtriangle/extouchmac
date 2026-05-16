@@ -447,13 +447,13 @@ export default function Home() {
               not <span className="text-[#b4bcc4]">zetamac</span>
             </h1>
             <p className="text-base md:text-lg mb-8 text-[#f0efeb] max-w-2xl mx-auto opacity-75">
-              zetamac but better :p
+              zetamac but the team captain hijacked the ui :p
             </p>
             <button
               onClick={() => router.push("/leaderboard")}
               className="px-6 py-2.5 bg-[#1f2228] hover:bg-[#282c34] text-[#f0efeb] rounded-lg font-medium text-sm transition-colors border border-[#3d424a] hover:border-[#515761] shadow-sm"
             >
-              Leaderboard
+              leaderboard
             </button>
           </div>
 
@@ -486,7 +486,7 @@ export default function Home() {
               onClick={startGame}
               className="px-12 py-4 bg-[#282c34] hover:bg-[#3d424a] border-2 border-[#b4bcc4] text-[#e0dcd4] hover:text-[#f0efeb] rounded-xl font-bold text-lg tracking-wide transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0"
             >
-              Start Game
+              start game
             </button>
           </div>
         </div>
