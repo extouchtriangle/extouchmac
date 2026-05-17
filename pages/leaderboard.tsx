@@ -198,7 +198,7 @@ export default function Leaderboard() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-4xl font-extrabold mb-4 tracking-tight text-[#e0dcd4]">
-              top <span className="text-[#b4bcc4]">math mains</span>
+              math <span className="text-[#b4bcc4]">mains</span>
             </h2>
             <p className="text-[#8b919a] text-sm">
               ranked by highest score • {leaderboard.length} player{leaderboard.length !== 1 ? 's' : ''}
