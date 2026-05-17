@@ -230,7 +230,7 @@ export default function Game() {
             max: parseInt(router.query.divMax2 as string) || 100,
           },
         },
-        duration: parseInt(router.query.duration as string) || 60,
+        duration: 120,
       };
       setGameConfig(config);
       startGame(config, config.duration);
