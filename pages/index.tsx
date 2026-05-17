@@ -450,7 +450,7 @@ export default function Home() {
               not <span className="text-[#b4bcc4]">zetamac</span>
             </h1>
             <p className="text-base md:text-lg mb-8 text-[#f0efeb] max-w-2xl mx-auto opacity-75">
-              zetamac but the team captain hijacked the ui :p
+              zetamac but @extouchtriangle hijacked the ui :p
             </p>
             <button
               onClick={startGame}
